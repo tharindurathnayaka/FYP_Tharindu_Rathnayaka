@@ -1,0 +1,19 @@
+
+
+`include "cpu.v"
+`timescale 1ns/100ps
+
+module cpu_tb;
+    parameter CLOCK_PERIOD = 10;
+
+
+    reg CLK,RESET,DATA_MEM_BUSYWAIT,INSTR_MEM_BUSYWAIT;
+    reg [31:0]INSTRUCTION,DATA_MEM_READ_DATA;
+    wire [31:0]PC,DATA_MEM_ADDR,DATA_MEM_WRITE_DATA;
+    wire [3:0] DATA_MEM_READ;
+    wire [2:0] DATA_MEM_WRITE;
+
+   cpu cpu1(CLK, RESET, PC, INSTRUCTION, DATA_MEM_READ, DATA_MEM_WRITE, DATA_MEM_ADDR,
+           DATA_MEM_WRITE_DATA, DATA_MEM_READ_DATA, DATA_MEM_BUSYWAIT, INSTR_MEM_BUSYWAIT);
+
+endmodule
